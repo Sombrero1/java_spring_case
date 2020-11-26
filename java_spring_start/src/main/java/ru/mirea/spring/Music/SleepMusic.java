@@ -1,21 +1,19 @@
 package ru.mirea.spring.Music;
 
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-public class ClassicalMusic implements Music{
+public class SleepMusic implements  Music {
     protected List<String> songs=new ArrayList<>();
-    public ClassicalMusic(){
-        songs.add("classic1");
-        songs.add("classic2");
-        songs.add("classic3");
+    public SleepMusic(){
+        songs.add("sleep1");
+        songs.add("sleep2");
+        songs.add("sleep3");
+
     }
     @Override
-    public String getMusic(){
+    public String getMusic() {
         Random rand=new Random();
         return songs.get(rand.nextInt(3));
     }

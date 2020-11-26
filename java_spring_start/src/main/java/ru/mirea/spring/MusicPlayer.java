@@ -11,30 +11,30 @@ import ru.mirea.spring.Music.Music;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.List;
+import java.util.Random;
 
-@Component
+
 public class MusicPlayer {
-    @Autowired
-    @Qualifier("classicalMusic")
-    Music music1;
-    @Autowired
-    @Qualifier("rockMusic")
-    Music music2;
-    @Value("${musicPlayer.name}")
+    private List<Music> music;
+
     private String name;
-    @Value("${musicPlayer.volume}")
     private int value;
 
-    enum Ch{
-        CLASSICAL, ROCK;
-    }
-    void playMusic(Ch e){
-        if(e==Ch.CLASSICAL) System.out.println(music1.getMusic());
-        else System.out.println(music2.getMusic());
+
+    public MusicPlayer (List<Music> music){
+        this.music=music;
+
 
     }
-    @PreDestroy
-    @PostConstruct
+
+    void playMusic(){
+        Random random=new Random();
+        System.out.println(music.get(random.nextInt(3)).getMusic());
+
+
+    }
+
     private void initdo(){
         System.out.println(name + " : " + value);
 
